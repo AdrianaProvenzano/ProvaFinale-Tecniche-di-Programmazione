@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -80,6 +81,10 @@ public class AgenzieController {
 
     @FXML
     private Slider numPrenotazioni;
+    
+    @FXML
+    private Label NumResults;
+
 
    
     private Model model;
@@ -119,6 +124,13 @@ public class AgenzieController {
     		risultatoAgenzie=model.cercaAgenzieDaNumPren(num, risultatoAgenzie); 
     	}
     	
+    	if(rdSI.isSelected()) {
+    		risultatoAgenzie=model.cercaAgenziaPreventivi(true, risultatoAgenzie); 
+    	}
+    	else if(rdNo.isSelected()) {
+    		risultatoAgenzie=model.cercaAgenziaPreventivi(false, risultatoAgenzie); 
+    	}
+    	
     	//RICERCA AGENZIA PER INTERESSI 
     	boolean [] interessi=new boolean [9]; 
     	interessi[0]=chkCicloturismo.isSelected(); 
@@ -142,6 +154,7 @@ public class AgenzieController {
     	//STAMPA RISULTATO
     	for(int i=0; i<risultatoAgenzie.size(); i++)
     		txtResult.appendText(risultatoAgenzie.get(i).toString());
+    	NumResults.setText("Numero risultati: "+risultatoAgenzie.size());
     }
 	
 	void initialize() {
@@ -163,6 +176,7 @@ public class AgenzieController {
         assert rdSI != null : "fx:id=\"rdSI\" was not injected: check your FXML file 'AgenzieController.fxml'.";
         assert rdNo != null : "fx:id=\"rdNo\" was not injected: check your FXML file 'AgenzieController.fxml'.";
         assert numPrenotazioni != null : "fx:id=\"numPrenotazioni\" was not injected: check your FXML file 'AgenzieController.fxml'.";
+        assert NumResults != null : "fx:id=\"NumResults\" was not injected: check your FXML file 'AgenzieController.fxml'.";
 	}
 
 
@@ -187,6 +201,10 @@ public class AgenzieController {
     	chkHoneyMoon.setSelected(false);
     	chkArteCultura.setSelected(false);
     	chkBenessereBellezza.setSelected(false); 
+    	rdSI.setSelected(false);
+    	rdNo.setSelected(false);
+    	numPrenotazioni.setValue(0);
+    	NumResults.setText("");
 	}
 	
 

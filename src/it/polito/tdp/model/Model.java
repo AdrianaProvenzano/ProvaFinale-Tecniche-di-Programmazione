@@ -118,6 +118,18 @@ public class Model {
 	
 	}
 
+
+
+	public LinkedList<Agenzia> cercaAgenziaPreventivi(boolean b, LinkedList<Agenzia> risultatoAgenzie) {
+		LinkedList <Agenzia> agenzie=new LinkedList <Agenzia> (); 
+		agenzie=daoAg.cercaPreventivi(IdMapAg, b); 
+		if(!risultatoAgenzie.isEmpty()) {
+			return intersezioneListe(risultatoAgenzie, agenzie); 
+			}
+		else
+			return agenzie;
+	}
+
 	
 
 }

@@ -310,6 +310,34 @@ public class AgenzieDAO {
 		return sql; 
 	}
 
+	public LinkedList<Agenzia> cercaPreventivi(TreeMap<Integer, Agenzia> idMapAg, boolean b) {
+		String sql = "SELECT a.Codice as cod FROM agenzia a WHERE Preventivi_01=?";
+		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
+
+		try { 
+			Connection conn = DBConnect.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			if(b)
+				st.setInt(1, 1);
+			else
+				st.setInt(1, 0);
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				if(idMapAg.containsKey(rs.getInt("cod")))
+					result.add(idMapAg.get(rs.getInt("cod")));
+			}
+
+			conn.close();
+			return result;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Errore connessione al database");
+			throw new RuntimeException("Error Connection Database");
+		}
+	}
+
 	
 
 }
