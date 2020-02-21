@@ -70,7 +70,7 @@ public class AgenzieDAO {
 	}
 	
 	public TreeMap <Integer, Agenzia> loadAgenzie(TreeMap <Integer, Agenzia> id, TreeMap <Integer,Referente> idR){
-		String sql = "SELECT * from agenzia";
+		String sql = "SELECT * from agenzie";
 		
 		try {
 			Connection conn = DBConnect.getConnection();
@@ -98,7 +98,7 @@ public class AgenzieDAO {
 						a.setArte_cultura(rs.getBoolean("ArteCultura"));
 						a.setBenessere_bellezza(rs.getBoolean("BenessereBellezza"));
 						a.setMice(rs.getBoolean("MICE"));
-						
+						a.setPrezzo(rs.getInt("Prezzo"));
 						id.put(a.getCod(), a);
 						}
 				}
@@ -162,7 +162,7 @@ public class AgenzieDAO {
 	}
 
 	public LinkedList<Agenzia> getAgenzieDaFiera(TreeMap<Integer, Agenzia> idMapAg, String nomeFiera) {
-		String sql = "SELECT a.Codice as cod FROM agenzia a, referenti r WHERE a.Nome_Referente=r.Nome_e_cognome and fiera=?";
+		String sql = "SELECT a.Codice as cod FROM agenzie a, referenti r WHERE a.Nome_Referente=r.Nome_e_cognome and fiera=?";
 		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
 
 		try {
@@ -187,7 +187,7 @@ public class AgenzieDAO {
 	}
 
 	public LinkedList<Agenzia> getAgenzieDaLingua(TreeMap<Integer, Agenzia> idMapAg, String lingua) {
-		String sql = "SELECT a.Codice as cod FROM agenzia a, referenti r WHERE a.Nome_Referente=r.Nome_e_cognome and lingua=?";
+		String sql = "SELECT a.Codice as cod FROM agenzie a, referenti r WHERE a.Nome_Referente=r.Nome_e_cognome and lingua=?";
 		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
 
 		try {
@@ -211,7 +211,7 @@ public class AgenzieDAO {
 		}	}
 
 	public LinkedList<Agenzia> getAgenzieDaNumPren(TreeMap<Integer, Agenzia> idMapAg, int num) {
-		String sql = "SELECT a.Codice as cod FROM agenzia a WHERE Num_Prenotazioni>=?";
+		String sql = "SELECT a.Codice as cod FROM agenzie a WHERE Num_Prenotazioni>=?";
 		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
 
 		try {
@@ -236,7 +236,7 @@ public class AgenzieDAO {
 	}
 
 	public LinkedList<Agenzia> cercaInteressi(TreeMap<Integer, Agenzia> idMapAg, boolean[] interessi) {
-		String sql = "SELECT a.Codice as cod FROM agenzia a WHERE ";
+		String sql = "SELECT a.Codice as cod FROM agenzie a WHERE ";
 		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
 
 		try {
@@ -311,7 +311,7 @@ public class AgenzieDAO {
 	}
 
 	public LinkedList<Agenzia> cercaPreventivi(TreeMap<Integer, Agenzia> idMapAg, boolean b) {
-		String sql = "SELECT a.Codice as cod FROM agenzia a WHERE Preventivi_01=?";
+		String sql = "SELECT a.Codice as cod FROM agenzie a WHERE Preventivi_01=?";
 		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
 
 		try { 
@@ -338,6 +338,32 @@ public class AgenzieDAO {
 		}
 	}
 
-	
+	public LinkedList<Agenzia> getPrezzo(TreeMap<Integer, Agenzia> idMapAg, int f) {
+		String sql = "SELECT a.Codice as cod FROM agenzie a WHERE Prezzo<=?";
+		LinkedList<Agenzia> result = new LinkedList<Agenzia>();
+
+		try { 
+			Connection conn = DBConnect.getConnection();
+			PreparedStatement st = conn.prepareStatement(sql);
+			st.setInt(1, f);
+			
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				if(idMapAg.containsKey(rs.getInt("cod")))
+					result.add(idMapAg.get(rs.getInt("cod")));
+			}
+
+			conn.close();
+			return result;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Errore connessione al database");
+			throw new RuntimeException("Error Connection Database");
+		}
+	}
+
+
 
 }

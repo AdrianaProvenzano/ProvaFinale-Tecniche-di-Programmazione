@@ -1,5 +1,6 @@
 package it.polito.tdp.agenzie;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -9,8 +10,13 @@ import java.util.ResourceBundle;
 
 import it.polito.tdp.model.Agenzia;
 import it.polito.tdp.model.Model;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -19,6 +25,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class AgenzieController {
 
@@ -84,17 +95,51 @@ public class AgenzieController {
     
     @FXML
     private Label NumResults;
-
-
-   
-    private Model model;
-
+    
     @FXML
+    private Button btnInvestimenti;
+
+    private Model model;
+    
+    private BorderPane root; 
+    
+    @FXML
+    private VBox vboxControls;
+    
+    @FXML
+    void doInvestimenti(ActionEvent event) throws IOException {
+    	Stage stage = null;
+        BorderPane root = null;
+        stage = (Stage) btnInvestimenti.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("InvestimentiController.fxml"));
+        root = loader.load();
+        InvestimentiController controller=loader.getController();
+        Model model=new Model(); 
+        controller.setModel(model);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @FXML
+    void doEnable(ActionEvent event) {
+    	vboxControls.setDisable(true);
+    }
+    
+	@FXML
     void doReset(ActionEvent event) {
-    	txtResult.clear();
+		//perchè serve cliccare due volte? 
+		txtResult.clear();
+		vboxControls.setDisable(false);
+		tndAgenzie.setDisable(false);
     	setComboItems(); 
     }
 
+	@FXML
+	void doEnableAgenzia(ActionEvent event) {
+		tndAgenzie.setDisable(true);
+	}
+	
     @FXML
     void doRicerca(ActionEvent event) {
     	txtResult.clear(); 
@@ -103,7 +148,7 @@ public class AgenzieController {
     	//RICERCA INFORMAZIONI AGENZIA
     	if(tndAgenzie.getValue()!=null) {
     		String nomeAgenzia=tndAgenzie.getValue(); 
-    		risultatoAgenzie=model.cercaInfoAgenzia(nomeAgenzia); 
+    		risultatoAgenzie=model.cercaInfoAgenzia(nomeAgenzia);
     	}
     	
     	//RICERCA AGENZIE PER FIERA
@@ -124,6 +169,7 @@ public class AgenzieController {
     		risultatoAgenzie=model.cercaAgenzieDaNumPren(num, risultatoAgenzie); 
     	}
     	
+    	//RICERCA PREVENTIVI
     	if(rdSI.isSelected()) {
     		risultatoAgenzie=model.cercaAgenziaPreventivi(true, risultatoAgenzie); 
     	}
@@ -150,12 +196,13 @@ public class AgenzieController {
     		}
     	if(almenoUno)
     		risultatoAgenzie=model.cercaAgenzieDaInteressi(interessi, risultatoAgenzie); 
-    	
+   
     	//STAMPA RISULTATO
     	for(int i=0; i<risultatoAgenzie.size(); i++)
-    		txtResult.appendText(risultatoAgenzie.get(i).toString());
-    	NumResults.setText("Numero risultati: "+risultatoAgenzie.size());
-    }
+			txtResult.appendText(risultatoAgenzie.get(i).toString());
+		NumResults.setText("Numero risultati: "+risultatoAgenzie.size());
+			    	
+    	}
 	
 	void initialize() {
         assert tndAgenzie != null : "fx:id=\"tndAgenzie\" was not injected: check your FXML file 'AgenzieController.fxml'.";
@@ -177,9 +224,9 @@ public class AgenzieController {
         assert rdNo != null : "fx:id=\"rdNo\" was not injected: check your FXML file 'AgenzieController.fxml'.";
         assert numPrenotazioni != null : "fx:id=\"numPrenotazioni\" was not injected: check your FXML file 'AgenzieController.fxml'.";
         assert NumResults != null : "fx:id=\"NumResults\" was not injected: check your FXML file 'AgenzieController.fxml'.";
+        assert btnInvestimenti != null : "fx:id=\"btnInvestimenti\" was not injected: check your FXML file 'AgenzieController.fxml'.";
+        assert vboxControls != null : "fx:id=\"vboxControls\" was not injected: check your FXML file 'AgenzieController.fxml'.";
 	}
-
-
 
 	public void setModel(Model model2) {
 		this.model=model2;
@@ -201,11 +248,13 @@ public class AgenzieController {
     	chkHoneyMoon.setSelected(false);
     	chkArteCultura.setSelected(false);
     	chkBenessereBellezza.setSelected(false); 
+    	chkMICE.setSelected(false);
     	rdSI.setSelected(false);
     	rdNo.setSelected(false);
     	numPrenotazioni.setValue(0);
     	NumResults.setText("");
 	}
+	
 	
 
 }

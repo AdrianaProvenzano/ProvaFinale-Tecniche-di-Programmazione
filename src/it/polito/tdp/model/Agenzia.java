@@ -17,10 +17,15 @@ public class Agenzia {
 	private boolean arte_cultura;
 	private boolean benessere_bellezza;
 	private boolean mice;
+	private int prezzo; 
+	private float punteggio; 
 	
+	
+
 	public Agenzia(int cod, String nome, Referente referente, boolean preventivi, int num_prenotazioni, float fatturato,
 			boolean cicloturismo, boolean enogastronomia, boolean lgbt, boolean pet_friendly, boolean piccoli_gruppi,
-			boolean honey_moon, boolean arte_cultura, boolean benessere_bellezza, boolean mice) {
+			boolean honey_moon, boolean arte_cultura, boolean benessere_bellezza, boolean mice, int prezzo) {
+		super();
 		this.cod = cod;
 		this.nome = nome;
 		this.referente = referente;
@@ -36,6 +41,7 @@ public class Agenzia {
 		this.arte_cultura = arte_cultura;
 		this.benessere_bellezza = benessere_bellezza;
 		this.mice = mice;
+		this.prezzo = prezzo;
 	}
 
 	public int getCod() {
@@ -164,16 +170,50 @@ public class Agenzia {
 	@Override
 	public String toString() {
 		String s=""; 
-		s+="\nAgenzia: " + nome+"\n";
-		s+="Referente:" + referente.getNome_cognome()+" (email: "+referente.getEmail()+", tel.: "+referente.getTelefono()+", lingua: "+referente.getLingua()+", fiera: "+referente.getFiera() +")\n";
+		s+="Agenzia: " + nome+"\n";
+		s+="Referente: " + referente.getNome_cognome()+" (email: "+referente.getEmail()+", tel.: "+referente.getTelefono()+", lingua: "+referente.getLingua()+", fiera: "+referente.getFiera() +")\n";
 		if(preventivi==true) 
 			s+="L'agenzia ha richiesto preventivi"; 
 		if(num_prenotazioni>0)
 			s+= "e ha effettutato "+num_prenotazioni+" prenotazioni, facendo ottenere un fatturato netto di "+fatturato+" €.\n"; 
-		s+="Interessi [cicloturismo="+ cicloturismo + ", enogastronomia=" + enogastronomia + ", lgbt=" + lgbt + ", pet_friendly="
-				+ pet_friendly + ", piccoli_gruppi=" + piccoli_gruppi + ", honey_moon=" + honey_moon + ", arte_cultura="
-				+ arte_cultura + ", benessere_bellezza=" + benessere_bellezza + ", mice=" + mice + "]\n";
+		s+="Interessi ["; 
+		if(this.isArte_cultura())
+			s+="Arte e Cultura, "; 
+		if(this.isBenessere_bellezza())
+			s+="Benessere e Bellezza, "; 
+		if(this.isCicloturismo())
+			s+="Cicloturismo, "; 
+		if(this.isEnogastronomia())
+			s+="Enogastronomia, ";  
+		if(this.isHoney_moon())
+			s+="Luna di Miele, "; 
+		if(this.isLgbt())
+			s+="LGBT, "; 
+		if(this.isMice())
+			s+="MICE, ";  
+		if(this.isPet_friendly())
+			s+="Pet friendly, "; 
+		if(this.isPiccoli_gruppi())
+			s+="Piccoli gruppi"; 
+		s+="]\n"; 
+		s+="Prezzo: "+prezzo+"€\n\n"; 
 		return s; 
+	}
+
+	public int getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(int prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public float getPunteggio() {
+		return punteggio;
+	}
+
+	public void setPunteggio(float punteggio) {
+		this.punteggio = punteggio;
 	} 
 	
 	
