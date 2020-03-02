@@ -122,7 +122,7 @@ public class AgenzieController {
     }
     
     @FXML
-    void doEnable(ActionEvent event) {
+    void doDisable(ActionEvent event) {
     	vboxControls.setDisable(true);
     }
     
@@ -136,7 +136,7 @@ public class AgenzieController {
     }
 
 	@FXML
-	void doEnableAgenzia(ActionEvent event) {
+	void doDisableAgenzia(ActionEvent event) {
 		tndAgenzie.setDisable(true);
 	}
 	

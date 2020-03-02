@@ -51,7 +51,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="tndAgenzie" onAction="#doEnable" prefHeight="2.0" prefWidth="150.0">
+                  <ComboBox fx:id="tndAgenzie" onAction="#doDisable" prefHeight="2.0" prefWidth="150.0">
                      <HBox.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </HBox.margin>
@@ -82,7 +82,7 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="tndLingua" onAction="#doEnableAgenzia" prefWidth="150.0">
+                        <ComboBox fx:id="tndLingua" onAction="#doDisableAgenzia" prefWidth="150.0">
                            <HBox.margin>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </HBox.margin>
@@ -122,15 +122,15 @@
                               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                            </padding>
                         </Label>
-                        <CheckBox fx:id="chkCicloturismo" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Cicloturismo" GridPane.columnIndex="1" />
-                        <CheckBox fx:id="chkEnogastronomia" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Enogastronomia" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chkLGBT" mnemonicParsing="false" onAction="#doEnableAgenzia" text="LGBT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <CheckBox fx:id="chkPetFriendly" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Pet friendly " GridPane.columnIndex="2" />
-                        <CheckBox fx:id="chkPiccoliGruppi" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Piccoli gruppi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chkHoneyMoon" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Lune di miele" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox fx:id="chkArteCultura" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Arte &amp; Cultura" GridPane.columnIndex="3" />
-                        <CheckBox fx:id="chkBenessereBellezza" mnemonicParsing="false" onAction="#doEnableAgenzia" text="Benessere &amp; Bellezza" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chkMICE" mnemonicParsing="false" onAction="#doEnableAgenzia" text="MICE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="chkCicloturismo" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Cicloturismo" GridPane.columnIndex="1" />
+                        <CheckBox fx:id="chkEnogastronomia" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Enogastronomia" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chkLGBT" mnemonicParsing="false" onAction="#doDisableAgenzia" text="LGBT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="chkPetFriendly" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Pet friendly " GridPane.columnIndex="2" />
+                        <CheckBox fx:id="chkPiccoliGruppi" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Piccoli gruppi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chkHoneyMoon" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Lune di miele" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="chkArteCultura" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Arte &amp; Cultura" GridPane.columnIndex="3" />
+                        <CheckBox fx:id="chkBenessereBellezza" mnemonicParsing="false" onAction="#doDisableAgenzia" text="Benessere &amp; Bellezza" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chkMICE" mnemonicParsing="false" onAction="#doDisableAgenzia" text="MICE" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      </children>
                      <VBox.margin>
                         <Insets left="1.0" top="5.0" />
@@ -181,7 +181,7 @@
                               <Font size="13.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="rdSI" mnemonicParsing="false" onAction="#doEnableAgenzia" text="SI">
+                        <RadioButton fx:id="rdSI" mnemonicParsing="false" onAction="#doDisableAgenzia" text="SI">
                            <HBox.margin>
                               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                            </HBox.margin>
@@ -192,7 +192,7 @@
                               <ToggleGroup fx:id="preventivi" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="rdNo" mnemonicParsing="false" onAction="#doEnableAgenzia" text="NO" toggleGroup="$preventivi">
+                        <RadioButton fx:id="rdNo" mnemonicParsing="false" onAction="#doDisableAgenzia" text="NO" toggleGroup="$preventivi">
                            <HBox.margin>
                               <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                            </HBox.margin>

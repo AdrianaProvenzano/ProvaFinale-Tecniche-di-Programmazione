@@ -216,7 +216,7 @@ INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES 
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (73,'Kauan Rodrigues Barbosa','21 265 983 4222','kauanRodriguesBarbosa@rhyta.com','POR','PLE (Marrakech) 2019');
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (74,'Khayriyyah Sibaal Said','78 367 843','KhayriyyahSibaalSaid@rhyta.com','ENG','ATM (Dubai) 2018');
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (75,'Laura Azevedo Alves','21 265 382 5689','LauraAzevedoAlves@jourrapide.com','POR','PLE (Marrakech) 2019');
-INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (76,'Lenora Urrútia Anaya','716 306 641','LenoraUrrutiaAnaya@jourrapide.com','SPA','PLE (Marrakech) 2021');
+INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (76,'Lenora Urrútia Anaya','716 306 641','LenoraUrrutiaAnaya@jourrapide.com','SPA','PLE (Marrakech) 2020');
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (77,'Lisa Schmidt','036929 22 75','LisaSchmidt@dayrep.com','TED','ITB (Berlino) 2018');
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (78,'Maddalena Lori','0359 9845727','MaddalenaLori@armyspy.com','ITA','TTG (Rimini) 2018');
 INSERT INTO referenti(Codice,Nome_e_cognome,telefono,email,lingua,fiera) VALUES (79,'Madeeha Karam Mansour','78 376 068','MadeehaKaramMansour@armyspy.com','ENG','ATM (Dubai) 2018');

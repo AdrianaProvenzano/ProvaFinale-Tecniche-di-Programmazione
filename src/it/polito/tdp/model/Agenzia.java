@@ -175,7 +175,7 @@ public class Agenzia {
 		if(preventivi==true) 
 			s+="L'agenzia ha richiesto preventivi"; 
 		if(num_prenotazioni>0)
-			s+= "e ha effettutato "+num_prenotazioni+" prenotazioni, facendo ottenere un fatturato netto di "+fatturato+" €.\n"; 
+			s+= " e ha effettutato "+num_prenotazioni+" prenotazioni, facendo ottenere un fatturato netto di "+fatturato+" €.\n"; 
 		s+="Interessi ["; 
 		if(this.isArte_cultura())
 			s+="Arte e Cultura, "; 

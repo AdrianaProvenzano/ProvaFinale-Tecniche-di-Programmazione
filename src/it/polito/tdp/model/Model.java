@@ -135,7 +135,7 @@ public class Model {
 		List <Agenzia> nuove=daoAg.cercaPreventivi(IdMapAg, false); 
 		List <Agenzia> vecchie=daoAg.cercaPreventivi(IdMapAg, true); 
 		
-		//Calcola punteggio per ogni agenzia
+		//calcola punteggio per ogni agenzia
 		for(int i=0; i<nuove.size(); i++) {
 			int num_interessi=calcolaInteressi(nuove.get(i)); 
 			float punteggio=(float) (num_interessi*0.1); 
@@ -151,7 +151,7 @@ public class Model {
 			vecchie.get(i).setPunteggio(punteggio);
 		}
 		
-		//Avvio ricorsione
+		//avvio ricorsione
 		best1=new ArrayList <Agenzia>(); 
 		best2=new ArrayList <Agenzia>(); 
 		ArrayList<Agenzia> parziale = new ArrayList<Agenzia>(); 
@@ -192,7 +192,7 @@ public class Model {
 		int prezzo=calcolaPrezzo(parziale);
 		if(prezzo>sommaVecchie)
 			return; 
-		
+		 
 		//se sono arrivato alla fine della lista delle agenzie "vecchie" -> esco
 		if(i==vecchie.size())
 			return ;
